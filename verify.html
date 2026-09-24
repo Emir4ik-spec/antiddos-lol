@@ -24,7 +24,11 @@
     <div id="guard-content" class="guard-content">
       <div class="vf-page" v-if="s.mode === 'card' && s.state !== 'fatal'">
         <div class="vfc">
-          <a class="vfc-brand" href="https://antiddos.lol" target="_blank" rel="noopener"><img class="vfc-brand-logo" :src="staticBase + 'brand-logo.svg'" alt=""><span>antiddos.lol</span></a>
+          <div class="vfc-head">
+            <img class="vfc-site" :src="s.logo" alt="" @error="logoFallback($event)">
+            <h1 class="vfc-host" v-text="s.host"></h1>
+            <p class="vfc-sub" v-text="text('lead')"></p>
+          </div>
           <div class="vf vfc-card">
             <div class="vf-card">
               <div class="vf-slot">
@@ -50,18 +54,14 @@
                   <p class="vf-txt" v-text="text('error')"></p>
                 </div>
               </div>
-              <div class="vf-host">
-                <img class="vf-logo" :src="s.logo" :alt="s.host + ' logo'" @error="logoFallback($event)">
-                <span class="vf-host-n" v-text="s.host"></span>
+              <div class="vf-shield" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.6c0 4.5 3.1 8.3 7.5 9.4 4.4-1.1 7.5-4.9 7.5-9.4V6L12 3Z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg>
               </div>
             </div>
           </div>
           <div class="vfc-foot">
-            <span class="vfc-foot-t" v-text="text('contact')"></span>
-            <a class="vf-link vfc-link" href="https://t.me/zertix_support" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M21.9 4.6 18.7 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.3-8.4c.4-.4-.1-.6-.6-.2L6.6 13 1.7 11.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.6Z"/></svg>
-              @zertix_support
-            </a>
+            <a class="vfc-by" href="https://antiddos.lol" target="_blank" rel="noopener"><img :src="staticBase + 'brand-logo.svg'" alt="" aria-hidden="true"><span><span v-text="text('by')"></span> <b>antiddos.lol</b></span></a>
+            <a class="vfc-help" href="https://t.me/zertix_support" target="_blank" rel="noopener"><span v-text="text('help')"></span> <b>@zertix_support</b></a>
           </div>
         </div>
       </div>
