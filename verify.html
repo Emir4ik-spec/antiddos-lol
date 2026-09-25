@@ -50,7 +50,7 @@
       <button type="button" class="mt-btn" v-if="s.retry" @click="retryClick()" v-text="text('retry')"></button>
     </main>
 
-    <footer class="mt-foot">
+    <footer class="mt-foot" v-if="s.state !== 'boot'">
       <p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p>
       <p class="mt-contact" v-if="showWait || s.state === 'fatal'"><span v-text="text('contact')"></span> <a href="mailto:support@antiddos.lol">support@antiddos.lol</a></p>
     </footer>

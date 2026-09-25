@@ -105,8 +105,8 @@ function captchaSlot() {
 const core = window.__adl ? window.__adl.start({ set, captchaSlot }) : null
 
 if (!core) {
-  const direct = location.hostname === 'cdn.antiddos.lol'
-  apply({ state: 'fatal', key: direct ? 'direct' : 'error', retry: !direct })
+  // Открыта напрямую по адресу cdn (ядро проверки отдаёт только защищаемый сайт) — ничего не показываем.
+  if (location.hostname !== 'cdn.antiddos.lol') apply({ state: 'fatal', key: 'error', retry: true })
 }
 
 createApp({
