@@ -97,6 +97,29 @@ button, input { font: inherit; }
 .mt-err .mt-btn { margin-top: 30px; }
 .mt-light .mt-err .mt-code { background: linear-gradient(180deg, #0b0b0c 8%, rgba(0, 0, 0, 0.06) 96%); -webkit-background-clip: text; background-clip: text; }
 
+.mt { --glow-a: 125, 211, 252; }
+.mt-light { --glow-a: 56, 189, 248; }
+.mt::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background:
+  radial-gradient(54% 40% at 50% 0%, rgba(var(--glow-a), 0.2), transparent 72%),
+  radial-gradient(54% 36% at 50% 100%, rgba(var(--glow-a), 0.17), transparent 72%),
+  radial-gradient(48% 48% at 100% 0%, rgba(var(--glow-a), 0.28), transparent 70%),
+  radial-gradient(48% 48% at 0% 100%, rgba(var(--glow-a), 0.25), transparent 70%); }
+.mt-light::before { background:
+  radial-gradient(52% 38% at 50% 0%, rgba(var(--glow-a), 0.12), transparent 72%),
+  radial-gradient(52% 34% at 50% 100%, rgba(var(--glow-a), 0.10), transparent 72%),
+  radial-gradient(46% 46% at 100% 0%, rgba(var(--glow-a), 0.16), transparent 70%),
+  radial-gradient(46% 46% at 0% 100%, rgba(var(--glow-a), 0.14), transparent 70%); }
+.mt-main { position: relative; z-index: 1; }
+.mt-foot { z-index: 1; }
+
+.mt-by::before { content: ''; position: absolute; z-index: -1; inset: -26px -20px -22px -34px; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.09) 58%, transparent); transition: opacity 0.25s ease, transform 0.25s ease; }
+.mt-by img { opacity: 0.9; filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.45)); }
+.mt-by span { color: rgba(255, 255, 255, 0.72); }
+.mt-by:hover::before { transform: scale(1.08); }
+.mt-light .mt-by::before { background: radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.5) 55%, transparent); }
+.mt-light .mt-by img { opacity: 0.6; filter: none; }
+@media (prefers-reduced-motion: reduce) { .mt-by::before { transition: none; } }
+
 .mt-foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; text-align: center; }
 .mt-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.01em; }
 .mt-contact { font-size: 10px; font-weight: 400; opacity: 0.92; }
