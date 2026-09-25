@@ -49,8 +49,20 @@ button, input { font: inherit; }
 .mt-no { color: var(--no); }
 .mt-widget { display: flex; justify-content: center; min-height: 65px; }
 
-.mt-btn { margin-top: 26px; height: 40px; padding: 0 22px; border-radius: 10px; border: 1px solid var(--card-line); background: var(--card); color: var(--fg); font-weight: 600; font-size: 14px; cursor: pointer; }
-.mt-btn:hover { border-color: rgba(255, 255, 255, 0.28); }
+.mt-btn { display: inline-flex; align-items: center; justify-content: center; margin-top: 26px; height: 42px; padding: 0 24px; border-radius: 10px; border: 1px solid var(--card-line); background: var(--card); color: var(--fg); font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+.mt-btn:hover { border-color: rgba(255, 255, 255, 0.3); }
+.mt-btn:active { transform: translateY(1px); }
+.mt-btn:focus-visible { outline: 2px solid rgba(255, 255, 255, 0.6); outline-offset: 2px; }
+.mt-btn-primary { background: #fff; color: #050506; border-color: #fff; }
+.mt-btn-primary:hover { background: rgba(255, 255, 255, 0.88); border-color: rgba(255, 255, 255, 0.88); }
+.mt-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+/* Страница ошибки: крупный код как акцент, под ним короткий заголовок */
+.mt-err .mt-code { font-family: 'Unbounded', 'Onest', system-ui, sans-serif; font-weight: 700; font-size: clamp(88px, 21vw, 176px); line-height: 0.95; letter-spacing: -0.04em; background: linear-gradient(180deg, #ffffff 8%, rgba(255, 255, 255, 0.06) 96%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; user-select: none; }
+.mt-err .mt-title { margin-top: 6px; }
+.mt-err .mt-sub-wait { margin-top: 14px; max-width: 420px; opacity: 0.7; }
+.mt-err .mt-btn { margin-top: 30px; }
+.mt-light .mt-err .mt-code { background: linear-gradient(180deg, #0b0b0c 8%, rgba(0, 0, 0, 0.06) 96%); -webkit-background-clip: text; background-clip: text; }
 
 .mt-foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; text-align: center; }
 .mt-brand { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
