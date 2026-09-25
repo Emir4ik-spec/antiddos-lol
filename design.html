@@ -7,37 +7,23 @@
 <title>Design preview | antiddos.lol</title>
 <link rel="stylesheet" href="verify.css?v=36">
 <style>
-.art { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-.art .p { position: absolute; inset: 0; mix-blend-mode: screen; opacity: .8;  }
-.art .l { -webkit-mask-image: linear-gradient(90deg, #000 10%, rgba(0, 0, 0, .6) 27%, transparent 46%); mask-image: linear-gradient(90deg, #000 10%, rgba(0, 0, 0, .6) 27%, transparent 46%); }
-.art .r { -webkit-mask-image: linear-gradient(270deg, #000 10%, rgba(0, 0, 0, .6) 27%, transparent 46%); mask-image: linear-gradient(270deg, #000 10%, rgba(0, 0, 0, .6) 27%, transparent 46%); }
-.art img { position: absolute; display: block; height: auto; user-select: none; -webkit-user-drag: none; transform: rotate(var(--r)); filter: brightness(var(--b, .72)) contrast(.93); }
-.art .a1 { width: 103.5vh; left: -36.0vh; top: -40.5vh; --r: -6deg; }
-.art .a5 { width: 80.6vh; left: -19.8vh; top: 35.2vh; --b: 1.8; --r: 10deg; }
-.art .a4 { width: 100.4vh; right: -35.4vh; top: -35.1vh; --r: 6deg; }
-.art .a3 { width: 75.1vh; right: -23.8vh; top: 42.4vh; --b: .9; --r: 14deg; }
+.sd { position: absolute; top: 0; height: 100vh; height: 100dvh; width: auto; z-index: 0; pointer-events: none; user-select: none; -webkit-user-drag: none; mix-blend-mode: screen; opacity: .92; }
+.sl { left: 0; -webkit-mask-image: linear-gradient(90deg, #000 62%, transparent 100%); mask-image: linear-gradient(90deg, #000 62%, transparent 100%); }
+.sr { right: 0; -webkit-mask-image: linear-gradient(270deg, #000 62%, transparent 100%); mask-image: linear-gradient(270deg, #000 62%, transparent 100%); }
+.mt { overflow: hidden; }
 .mt-main, .mt-foot { position: relative; z-index: 1; }
 .mt-foot { position: absolute; }
-
-@media (max-width: 720px) {
-  .art .p { opacity: .5; }
-  .art .l { -webkit-mask-image: linear-gradient(90deg, #000 6%, transparent 62%); mask-image: linear-gradient(90deg, #000 6%, transparent 62%); }
-  .art .r { -webkit-mask-image: linear-gradient(270deg, #000 6%, transparent 62%); mask-image: linear-gradient(270deg, #000 6%, transparent 62%); }
-  .art .a1 { width: 92vw; left: -38vw; top: -16vw; }
-  .art .a4 { width: 92vw; right: -36vw; top: 4vh; }
-  .art .a5 { width: 90vw; left: -34vw; bottom: -14vw; }
-  .art .a3 { width: 90vw; right: -34vw; bottom: 8vh; }
+@media (max-width: 768px) {
+  .sd { opacity: .42; }
+  .sl { left: -22vh; }
+  .sr { right: -22vh; }
 }
 </style>
 </head>
 <body>
 <div id="guard-page" class="mt">
-  <div class="art" aria-hidden="true">
-    <div class="p r"><img class="a4" src="_antiddos_static/art/4.webp" alt=""></div>
-    <div class="p l"><img class="a1" src="_antiddos_static/art/1.webp" alt=""></div>
-    <div class="p r"><img class="a3" src="_antiddos_static/art/3.webp" alt=""></div>
-    <div class="p l"><img class="a5" src="_antiddos_static/art/5.webp" alt=""></div>
-  </div>
+  <img class="sd sl" src="_antiddos_static/art/side-l.webp" alt="" aria-hidden="true">
+  <img class="sd sr" src="_antiddos_static/art/side-r.webp" alt="" aria-hidden="true">
   <main class="mt-main">
     <h1 class="mt-title">Additional Verification Required</h1>
     <p class="mt-sub">Please complete the CAPTCHA below to proceed</p>
@@ -49,7 +35,5 @@
   </main>
   <footer class="mt-foot"><p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></footer>
 </div>
-<script>
-</script>
 </body>
 </html>
