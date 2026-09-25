@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Design preview | antiddos.lol</title>
+<link rel="stylesheet" href="verify.css?v=36">
+<style>
+.art { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.art img { position: absolute; display: block; height: auto; user-select: none; -webkit-user-drag: none; will-change: transform; }
+.art .p { position: absolute; inset: 0; will-change: transform; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.art img { mix-blend-mode: screen; animation: art-float 16s ease-in-out infinite alternate; }
+.a1 { width: min(58vmin, 640px); right: -5vmin; top: 50%; margin-top: min(-36vmin, -400px); opacity: .95; --r: 14deg; }
+.a2 { width: min(50vmin, 540px); left: -9vmin; bottom: -13vmin; opacity: .85; --r: -18deg; animation-delay: -6s; animation-duration: 19s; }
+.a3 { width: min(27vmin, 300px); left: 9vw; top: -3vmin; opacity: .55; filter: blur(1.4px); --r: 32deg; animation-delay: -3s; animation-duration: 22s; }
+.a4 { width: min(30vmin, 330px); right: 13vw; bottom: -7vmin; opacity: .8; filter: brightness(2.3) contrast(1.05); --r: -8deg; animation-delay: -10s; animation-duration: 18s; }
+@keyframes art-float { from { transform: translateY(-9px) rotate(calc(var(--r) - 1.6deg)); } to { transform: translateY(11px) rotate(calc(var(--r) + 1.6deg)); } }
+.art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 55% at 50% 50%, rgba(0, 0, 0, .55), transparent 75%); }
+
+.mt-light { background-image: linear-gradient(180deg, #f1f1f2, #fbfbfb 45%, #efeff0); }
+.mt-light .art img { mix-blend-mode: multiply; filter: invert(1) contrast(1.05); opacity: .85; }
+.mt-light .art .a3 { filter: invert(1) blur(1.4px); opacity: .4; }
+.mt-light .art .a4 { display: none; }
+.mt-light .art::after { background: radial-gradient(60% 55% at 50% 50%, rgba(255, 255, 255, .8), transparent 75%); }
+.mt-main, .mt-foot { position: relative; z-index: 1; }
+.mt-foot { position: absolute; }
+
+@media (max-width: 720px) {
+  .a1 { width: 64vmin; right: -20vmin; top: 6vh; margin-top: 0; opacity: .6; }
+  .a2 { width: 62vmin; left: -22vmin; bottom: -10vmin; opacity: .55; }
+  .a3 { display: none; }
+  .a4 { width: 34vmin; right: 4vw; bottom: 8vh; opacity: .5; }
+}
+@media (prefers-reduced-motion: reduce) { .art img { animation: none; transform: rotate(var(--r)); } }
+</style>
+</head>
+<body>
+<div id="guard-page" class="mt">
+  <div class="art" aria-hidden="true">
+    <div class="p" data-d="26"><img class="a1" src="_antiddos_static/art/4.webp" alt=""></div>
+    <div class="p" data-d="18"><img class="a2" src="_antiddos_static/art/1.webp" alt=""></div>
+    <div class="p" data-d="8"><img class="a3" src="_antiddos_static/art/3.webp" alt=""></div>
+    <div class="p" data-d="14"><img class="a4" src="_antiddos_static/art/5.webp" alt=""></div>
+  </div>
+  <main class="mt-main">
+    <h1 class="mt-title">Additional Verification Required</h1>
+    <p class="mt-sub">Please complete the CAPTCHA below to proceed</p>
+    <div class="mt-card is-ready">
+      <div class="mt-ind"><input id="antiddos-check" class="mt-cbx-in" type="checkbox"><label class="mt-cbx" for="antiddos-check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.75 12.25 L9.75 17.25 L19.25 6.75" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></label></div>
+      <p class="mt-txt">I'm not a robot</p>
+      <a class="mt-by" href="https://antiddos.lol" target="_blank" rel="noopener"><span>By antiddos.lol</span><img src="_antiddos_static/brand-logo.svg" alt=""></a>
+    </div>
+  </main>
+  <footer class="mt-foot"><p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></footer>
+</div>
+<script>
+var pg = document.getElementById('guard-page');
+if (/[?&]light/.test(location.search) || (!/[?&]dark/.test(location.search) && matchMedia('(prefers-color-scheme: light)').matches)) pg.classList.add('mt-light');
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(pointer: fine)').matches) {
+  var ps = document.querySelectorAll('.art .p');
+  addEventListener('pointermove', function (e) {
+    var x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    ps.forEach(function (p) { var d = +p.dataset.d; p.style.transform = 'translate(' + (-x * d).toFixed(1) + 'px,' + (-y * d).toFixed(1) + 'px)'; });
+  });
+}
+</script>
+</body>
+</html>
