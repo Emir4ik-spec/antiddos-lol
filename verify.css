@@ -40,8 +40,8 @@ button, input { font: inherit; }
 .mt-sub-wait { margin-top: 14px; font-size: 14px; max-width: 420px; }
 
 .mt-card { position: relative; width: min(100%, 304px); height: 54px; margin-top: 20px; padding: 0 14px 0 16px; display: flex; align-items: center; gap: 12px; text-align: left; border-radius: 12px; background: #0d0d0e; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.075); transition: box-shadow 0.2s, opacity 0.16s, height 0.52s cubic-bezier(0.22, 1, 0.36, 1); }
-.mt-card.is-success { box-shadow: 0 0 0 1px rgba(52, 199, 89, 0.4); }
-.mt-card.is-error { box-shadow: 0 0 0 1px rgba(255, 69, 58, 0.5); animation: mt-shake 0.36s ease; }
+.mt-card.is-success { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); }
+.mt-card.is-error { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); animation: mt-shake 0.36s ease; }
 .mt-card.mt-out { opacity: 0; }
 .mt-col { width: 100%; height: auto; display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 10px 0; }
 
@@ -50,7 +50,7 @@ button, input { font: inherit; }
 .mt-pct { font-weight: 500; opacity: 0.55; }
 
 .mt-cbx-in { position: absolute; opacity: 0; pointer-events: none; }
-.mt-cbx { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.3); background: transparent; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: transparent; transition: border-color 0.18s, background 0.18s; }
+.mt-cbx { width: 20px; height: 20px; border-radius: 7px; border: 1.5px solid rgba(255, 255, 255, 0.3); background: transparent; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: transparent; transition: border-color 0.18s, background 0.18s; }
 .mt-cbx svg { width: 13px; height: 13px; }
 .mt-cbx-in:focus-visible + .mt-cbx { outline: 2px solid rgba(255, 255, 255, 0.7); outline-offset: 3px; }
 
@@ -62,7 +62,7 @@ button, input { font: inherit; }
 @keyframes mt-rot { to { transform: rotate(360deg); } }
 @keyframes mt-shake { 20% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 80% { transform: translateX(-2px); } }
 
-.mt-mark { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; }
+.mt-mark { width: 20px; height: 20px; border-radius: 7px; display: grid; place-items: center; }
 .mt-mark svg { width: 13px; height: 13px; }
 .mt-ok { color: #06140a; background: var(--ok); }
 .mt-ok path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: mt-draw 0.28s 0.05s ease forwards; }
