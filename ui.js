@@ -44,7 +44,7 @@ const RU = {
   direct: 'Эта страница открывается только через защищаемый сайт.',
   directTitle: 'antiddos.lol'
 }
-const texts = /^ru\b/i.test(navigator.language || '') ? RU : EN
+const texts = /^(ru|uk|be|kk|ky)\b/i.test(navigator.language || '') ? RU : EN
 document.documentElement.lang = texts === RU ? 'ru' : 'en'
 
 const store = reactive({

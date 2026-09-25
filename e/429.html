@@ -3,17 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>429 Too many requests | AntiDDos</title>
+<title>429 Too many requests | Protected by AntiDDos</title>
 <meta name="robots" content="noindex, nofollow">
-<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=32ec7b9">
-<style>[hidden]{display:none!important}</style>
+<link rel="icon" type="image/svg+xml" href="https://cdn.antiddos.lol/favicon.svg">
+<link rel="alternate icon" href="https://cdn.antiddos.lol/favicon.ico">
+<link rel="apple-touch-icon" href="https://cdn.antiddos.lol/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;600&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:#000}
+body{min-width:300px;font-family:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+a{color:inherit;text-decoration:none}
+.mt{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px 88px;background:#000}
+.mt-main{width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:-3vh}
+.mt-code{font-family:'Unbounded','Onest',system-ui,sans-serif;font-weight:700;font-size:clamp(88px,21vw,176px);line-height:.95;letter-spacing:-.04em;background:linear-gradient(180deg,#fff 8%,rgba(255,255,255,.06) 96%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;user-select:none}
+.mt-title{margin-top:6px;font-family:'Unbounded','Onest',system-ui,sans-serif;font-size:clamp(19px,3.4vw,27px);font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.mt-sub{margin-top:14px;max-width:420px;font-size:14.5px;font-weight:400;line-height:1.5;opacity:.7}
+.mt-foot{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;padding:0 20px;text-align:center}
+.mt-brand{font-size:11px;font-weight:600;letter-spacing:.01em}
+.mt-brand a:hover{opacity:.8}
+@media(max-width:480px){.mt{padding-bottom:96px}.mt-sub{font-size:13px}}
+</style>
 </head>
 <body>
   <div class="mt">
-    <main class="mt-main mt-err" id="err">
+    <main class="mt-main">
       <div class="mt-code" aria-hidden="true">429</div>
       <h1 class="mt-title" data-ru="Слишком много запросов">Too many requests</h1>
-      <p class="mt-sub mt-sub-wait" data-ru="Вы отправляете запросы слишком часто. Подождите немного и повторите.">You are sending requests too fast. Wait a moment and try again.</p>
+      <p class="mt-sub" data-ru="Вы отправляете запросы слишком часто. Подождите немного и повторите.">You are sending requests too fast. Wait a moment and try again.</p>
     </main>
     <footer class="mt-foot">
       <p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p>
@@ -21,7 +40,8 @@
   </div>
 <script>
 (function () {
-  if (/^ru\b/i.test(navigator.language || '')) {
+  var l = (navigator.language || '').toLowerCase()
+  if (/^(ru|uk|be|kk|ky)\b/.test(l)) {
     document.documentElement.lang = 'ru'
     document.querySelectorAll('[data-ru]').forEach(function (el) { el.textContent = el.getAttribute('data-ru') })
   }
