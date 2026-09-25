@@ -4,22 +4,48 @@ const STATIC = 'https://cdn.antiddos.lol/_antiddos_static/'
 const SLOW_MS = 2500
 const FADE_MS = 160
 
-const texts = {
-  contact: 'Возникли сложности? Напишите в поддержку:',
-  lead: 'Подтвердите, что вы человек, чтобы продолжить',
-  by: 'Защищено',
-  help: 'Нужна помощь?',
+const EN = {
+  title: 'Additional Verification Required',
+  lead: 'Please complete the CAPTCHA below to proceed',
+  checkbox: "I'm not a robot",
+  loading: 'Preparing the check...',
+  solving: 'Running the check...',
+  captcha: 'Please complete the check above',
+  verifying: 'Verifying...',
+  success: 'Done. Redirecting...',
+  error: 'Verification failed, please try again',
+  retry: 'Retry',
+  waitTitle: 'Wait a moment..',
+  waitText: 'We are currently checking your browser. This page will refresh automatically soon.',
+  failTitle: 'Verification failed',
+  errorFatal: 'Something went wrong. Please try again.',
+  contact: 'If you are experiencing any issues, please contact us at:',
+  cookies: 'The result could not be saved. Please enable cookies and reload the page.',
+  direct: 'This page only opens through a protected website.',
+  directTitle: 'antiddos.lol'
+}
+const RU = {
+  title: 'Требуется дополнительная проверка',
+  lead: 'Пройдите проверку ниже, чтобы продолжить',
   checkbox: 'Я не робот',
   loading: 'Подготовка проверки...',
   solving: 'Выполнение проверки...',
-  captcha: 'Пройдите проверку ниже',
-  verifying: 'Проверка на сервере...',
+  captcha: 'Пройдите проверку выше',
+  verifying: 'Проверка...',
   success: 'Готово. Перенаправляем...',
   error: 'Проверка не пройдена, повторите попытку',
-  retry: 'Повторить / Retry',
-  cookies: 'Не удалось сохранить результат проверки. Включите cookies и обновите страницу',
-  direct: 'Эта страница открывается только через защищаемый сайт'
+  retry: 'Повторить',
+  waitTitle: 'Подождите немного..',
+  waitText: 'Мы проверяем ваш браузер. Страница обновится автоматически.',
+  failTitle: 'Проверка не пройдена',
+  errorFatal: 'Что-то пошло не так. Повторите попытку.',
+  contact: 'Если возникли проблемы, напишите нам:',
+  cookies: 'Не удалось сохранить результат. Включите cookies и обновите страницу.',
+  direct: 'Эта страница открывается только через защищаемый сайт.',
+  directTitle: 'antiddos.lol'
 }
+const texts = /^ru\b/i.test(navigator.language || '') ? RU : EN
+document.documentElement.lang = texts === RU ? 'ru' : 'en'
 
 const store = reactive({
   mode: 'pending',
@@ -29,9 +55,7 @@ const store = reactive({
   pct: 0,
   retry: false,
   leaving: false,
-  slow: false,
-  host: location.hostname,
-  logo: '/api/guard/client-logo?host=' + encodeURIComponent(location.hostname)
+  slow: false
 })
 
 let pending = null
@@ -89,10 +113,9 @@ createApp({
   s: store,
   text: (key) => texts[key] || '',
   staticBase: STATIC,
+  get showWait() {
+    return store.state !== 'fatal' && (store.mode === 'invisible' || (store.mode === 'passive' && store.slow))
+  },
   click: () => core && core.click(),
-  retryClick: () => (core ? core.retry() : location.reload()),
-  logoFallback: (event) => {
-    event.target.onerror = null
-    event.target.src = STATIC + 'brand-logo.svg'
-  }
+  retryClick: () => (core ? core.retry() : location.reload())
 }).mount('#guard-page')

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Error | antiddos.lol</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css">
+</head>
+<body>
+  <div class="mt">
+    <main class="mt-main">
+      <h1 class="mt-title" id="code">Error</h1>
+      <p class="mt-sub mt-sub-wait" id="text"></p>
+    </main>
+    <footer class="mt-foot">
+      <p class="mt-brand">antiddos.lol DDoS Mitigation</p>
+    </footer>
+  </div>
+<script>
+(function () {
+  var ru = /^ru\b/i.test(navigator.language || '')
+  var map = {
+    400: ['Bad Request', 'Sorry, the server could not understand your request.', 'Некорректный запрос', 'Сервер не смог понять ваш запрос.'],
+    403: ['Forbidden', "Sorry, you don't have access to this page.", 'Доступ запрещён', 'У вас нет доступа к этой странице.'],
+    404: ['Not Found', 'Sorry, the page you are looking for could not be found.', 'Страница не найдена', 'Запрошенная страница не найдена.'],
+    429: ['Too Many Requests', 'Sorry, you are sending too many requests. Please try again in a moment.', 'Слишком много запросов', 'Вы отправляете слишком много запросов. Повторите чуть позже.'],
+    500: ['Internal Server Error', 'Sorry, something went wrong on the server.', 'Внутренняя ошибка сервера', 'Что-то пошло не так на сервере.'],
+    502: ['Bad Gateway', 'Sorry, there was a problem connecting to the requested server.', 'Плохой шлюз', 'Не удалось подключиться к запрошенному серверу.'],
+    503: ['Service Unavailable', 'Sorry, the service is temporarily unavailable. Please try again later.', 'Сервис недоступен', 'Сервис временно недоступен. Попробуйте позже.'],
+    504: ['Gateway Timeout', 'Sorry, the requested server took too long to respond.', 'Шлюз не отвечает', 'Запрошенный сервер слишком долго не отвечает.']
+  }
+  var raw = parseInt(new URLSearchParams(location.search).get('code'), 10)
+  var code = map[raw] ? raw : (raw >= 500 ? 500 : 400)
+  var m = map[code]
+  document.documentElement.lang = ru ? 'ru' : 'en'
+  document.title = code + ' ' + m[0] + ' | antiddos.lol'
+  document.getElementById('code').textContent = code + ' ' + (ru ? m[2] : m[0])
+  document.getElementById('text').textContent = ru ? m[3] : m[1]
+})()
+</script>
+</body>
+</html>

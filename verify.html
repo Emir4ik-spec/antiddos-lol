@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,74 +9,51 @@
 <style>[v-cloak]{display:none}</style>
 </head>
 <body>
-  <div id="guard-page" class="guard-page" v-cloak :class="{ 'guard-page-glow': s.mode === 'card', 'theme-light-container': s.theme === 'light' }">
-    <template v-if="s.mode === 'card'">
-      <div class="guard-sky" aria-hidden="true"></div>
-      <div class="guard-obj a" aria-hidden="true"></div>
-      <div class="guard-obj b" aria-hidden="true"></div>
-      <div class="guard-obj c" aria-hidden="true"></div>
-      <div class="guard-obj d" aria-hidden="true"></div>
-      <div class="guard-obj e" aria-hidden="true"></div>
-      <div class="guard-obj f" aria-hidden="true"></div>
-      <div class="guard-wall" aria-hidden="true"><span class="m1">antiddos.lol</span><span class="m2">antiddos.lol</span></div>
-    </template>
+  <div id="guard-page" class="mt" v-cloak :class="{ 'mt-light': s.theme === 'light' }">
 
-    <div id="guard-content" class="guard-content">
-      <div class="vf-page" v-if="s.mode === 'card' && s.state !== 'fatal'">
-        <div class="vfc">
-          <div class="vfc-head">
-            <img class="vfc-site" :src="s.logo" alt="" @error="logoFallback($event)">
-            <h1 class="vfc-host" v-text="s.host"></h1>
-            <p class="vfc-sub" v-text="text('lead')"></p>
-          </div>
-          <div class="vf vfc-card">
-            <div class="vf-card">
-              <div class="vf-slot">
-                <div class="vf-row" :class="{ 'vf-row-out': s.leaving }" v-if="s.state === 'ready'">
-                  <input id="antiddos-check" class="vf-cbx-in" type="checkbox">
-                  <label class="vf-cbx" for="antiddos-check" @click.prevent="click()"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9.5 18 L20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
-                  <p class="vf-txt vf-txt-big" v-text="text('checkbox')"></p>
-                </div>
-                <div class="vf-row" :class="{ 'vf-row-out': s.leaving }" v-else-if="s.state === 'progress'">
-                  <img class="vf-spin" :src="staticBase + 'icons/spinner.svg'" alt="" aria-hidden="true">
-                  <p class="vf-txt"><span v-text="text(s.key)"></span> <b class="vf-pct" v-if="s.pct" v-text="s.pct + '%'"></b></p>
-                </div>
-                <div class="vf-row vf-row-col" :class="{ 'vf-row-out': s.leaving }" v-else-if="s.state === 'captcha'">
-                  <div class="vf-widget" id="vf-widget"></div>
-                  <p class="vf-txt" v-text="text('captcha')"></p>
-                </div>
-                <div class="vf-row" :class="{ 'vf-row-out': s.leaving }" v-else-if="s.state === 'success'">
-                  <span class="vf-mark vf-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9.5 18 L20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                  <p class="vf-txt" v-text="text('success')"></p>
-                </div>
-                <div class="vf-row" :class="{ 'vf-row-out': s.leaving }" v-else-if="s.state === 'error'">
-                  <span class="vf-mark vf-no" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6 L18 18 M18 6 L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
-                  <p class="vf-txt" v-text="text('error')"></p>
-                </div>
-              </div>
-              <div class="vf-shield" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.6c0 4.5 3.1 8.3 7.5 9.4 4.4-1.1 7.5-4.9 7.5-9.4V6L12 3Z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="vfc-foot">
-            <a class="vfc-by" href="https://antiddos.lol" target="_blank" rel="noopener"><img :src="staticBase + 'brand-logo.svg'" alt="" aria-hidden="true"><span><span v-text="text('by')"></span> <b>antiddos.lol</b></span></a>
-            <a class="vfc-help" href="https://t.me/zertix_support" target="_blank" rel="noopener"><span v-text="text('help')"></span> <b>@zertix_support</b></a>
-          </div>
+    <main class="mt-main" v-if="s.mode === 'card' && s.state !== 'fatal'">
+      <h1 class="mt-title" v-text="text('title')"></h1>
+      <p class="mt-sub" v-text="text('lead')"></p>
+      <div class="mt-card" :class="{ 'mt-out': s.leaving }">
+        <div class="mt-row" v-if="s.state === 'ready'">
+          <input id="antiddos-check" class="mt-cbx-in" type="checkbox">
+          <label class="mt-cbx" for="antiddos-check" @click.prevent="click()"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+          <p class="mt-txt" v-text="text('checkbox')"></p>
+        </div>
+        <div class="mt-row" v-else-if="s.state === 'progress'">
+          <img class="mt-spin" :src="staticBase + 'icons/spinner.svg'" alt="" aria-hidden="true">
+          <p class="mt-txt"><span v-text="text(s.key)"></span> <b class="mt-pct" v-if="s.pct" v-text="s.pct + '%'"></b></p>
+        </div>
+        <div class="mt-row mt-col" v-else-if="s.state === 'captcha'">
+          <div class="mt-widget" id="vf-widget"></div>
+          <p class="mt-txt" v-text="text('captcha')"></p>
+        </div>
+        <div class="mt-row" v-else-if="s.state === 'success'">
+          <span class="mt-mark mt-ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5 L9.5 18 L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <p class="mt-txt" v-text="text('success')"></p>
+        </div>
+        <div class="mt-row" v-else-if="s.state === 'error'">
+          <span class="mt-mark mt-no" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6 L18 18 M18 6 L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
+          <p class="mt-txt" v-text="text('error')"></p>
         </div>
       </div>
+    </main>
 
-      <div class="vf-silent" v-if="s.state === 'fatal' || s.mode === 'passive' || s.mode === 'invisible'">
-        <div class="vf-load" v-if="s.state === 'progress' && (s.mode === 'invisible' || s.slow)">
-          <img class="vf-spin vf-spin-lg" :src="staticBase + 'icons/spinner.svg'" alt="" aria-hidden="true">
-          <p class="vf-load-t" v-if="s.mode === 'invisible'" v-text="text('loading')"></p>
-        </div>
-        <div class="vf-fail" v-if="s.state === 'fatal'">
-          <p class="vf-fail-t" v-text="text(s.key)"></p>
-          <button type="button" class="vf-btn" v-if="s.retry" @click="retryClick()" v-text="text('retry')"></button>
-        </div>
-      </div>
-    </div>
+    <main class="mt-main" v-else-if="showWait">
+      <h1 class="mt-title" v-text="text('waitTitle')"></h1>
+      <p class="mt-sub mt-sub-wait" v-text="text('waitText')"></p>
+    </main>
+
+    <main class="mt-main" v-else-if="s.state === 'fatal'">
+      <h1 class="mt-title" v-text="text(s.key === 'direct' ? 'directTitle' : 'failTitle')"></h1>
+      <p class="mt-sub mt-sub-wait" v-text="text(s.key === 'error' ? 'errorFatal' : s.key)"></p>
+      <button type="button" class="mt-btn" v-if="s.retry" @click="retryClick()" v-text="text('retry')"></button>
+    </main>
+
+    <footer class="mt-foot">
+      <p class="mt-brand">antiddos.lol DDoS Mitigation</p>
+      <p class="mt-contact" v-if="showWait || s.state === 'fatal'"><span v-text="text('contact')"></span> <a href="mailto:support@antiddos.lol">support@antiddos.lol</a></p>
+    </footer>
   </div>
 
 <script src="/api/guard/core"></script>
