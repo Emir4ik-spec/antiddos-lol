@@ -5,6 +5,7 @@ const SLOW_MS = 2500
 const FADE_MS = 160
 
 const EN = {
+  by: 'By antiddos.lol',
   title: 'Additional Verification Required',
   lead: 'Please complete the CAPTCHA below to proceed',
   checkbox: "I'm not a robot",
@@ -25,6 +26,7 @@ const EN = {
   directTitle: 'antiddos.lol'
 }
 const RU = {
+  by: 'От antiddos.lol',
   title: 'Требуется дополнительная проверка',
   lead: 'Пройдите проверку ниже, чтобы продолжить',
   checkbox: 'Я не робот',
