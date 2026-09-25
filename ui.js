@@ -112,13 +112,7 @@ if (!core && !demo) {
   apply({ state: 'fatal', key: 'error', retry: true })
 }
 if (demo) {
-  const DEMO = {
-    success: { state: 'success', key: 'success' },
-    error: { state: 'error', key: 'error' },
-    progress: { state: 'progress', key: 'solving', pct: 63 }
-  }
-  const forced = DEMO[new URLSearchParams(location.search).get('demo')]
-  apply({ mode: 'card', ...(forced || { state: 'ready', key: 'checkbox' }) })
+  apply({ mode: 'card', state: 'ready', key: 'checkbox' })
 }
 
 createApp({
