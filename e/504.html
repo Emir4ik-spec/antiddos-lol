@@ -14,10 +14,6 @@
       <div class="mt-code" aria-hidden="true">504</div>
       <h1 class="mt-title" data-ru="Сервер долго отвечает">Gateway timeout</h1>
       <p class="mt-sub mt-sub-wait" data-ru="Сервер слишком долго отвечает. Повторите попытку.">The server took too long to respond. Please try again.</p>
-      <div class="mt-actions">
-        <button type="button" class="mt-btn mt-btn-primary" id="primary" data-ru="Повторить">Try again</button>
-        <a class="mt-btn" href="/" data-ru="На главную">Home</a>
-      </div>
     </main>
     <footer class="mt-foot">
       <p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p>
@@ -29,7 +25,6 @@
     document.documentElement.lang = 'ru'
     document.querySelectorAll('[data-ru]').forEach(function (el) { el.textContent = el.getAttribute('data-ru') })
   }
-  document.getElementById('primary').onclick = function () { location.reload() }
 })()
 </script>
 </body>
