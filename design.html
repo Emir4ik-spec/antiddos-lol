@@ -7,21 +7,37 @@
 <title>Design preview | antiddos.lol</title>
 <link rel="stylesheet" href="verify.css?v=36">
 <style>
-.sd { position: absolute; top: 0; height: 100vh; height: 100dvh; width: auto; z-index: 0; pointer-events: none; user-select: none; -webkit-user-drag: none; mix-blend-mode: screen; opacity: .92; }
+:root { --g2: #4a1f00; --b1: #ca6c6c; --b2: #ff0004; --b3: #f00; --b4: #ff8a00; --m2: difference; --tint: sepia(.85) saturate(2.3) hue-rotate(-14deg) contrast(1.12) brightness(.97); }
+:root[data-c="cool"] { --g2: #06304f; --b1: #5bb8f0; --b2: #1e90ff; --b3: #38bdf8; --b4: #7dd3fc; --m2: screen; --tint: sepia(.9) saturate(2.5) hue-rotate(168deg) contrast(1.1) brightness(.97); }
+html { background: linear-gradient(180deg, #000 0%, var(--g2) 100%) no-repeat #000; min-height: 100%; }
+body { background: transparent; }
+.mt { background: none; overflow: hidden; }
+.mt-light { background: none; }
+.mt::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events: none; mix-blend-mode: soft-light; opacity: .3; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+.bl { position: absolute; z-index: -1; width: 1em; height: 1em; border-radius: 50%; pointer-events: none; }
+.bl1 { font-size: 90vw; background: var(--b1); filter: blur(10vw); mix-blend-mode: overlay; right: -.8em; bottom: -.5em; }
+.bl2 { font-size: 40vw; background: var(--b2); filter: blur(4vw); mix-blend-mode: var(--m2); left: -.4em; bottom: -.4em; }
+.bl3 { font-size: 50vw; background: var(--b3); filter: blur(10vw); mix-blend-mode: overlay; right: -.6em; bottom: -.5em; }
+.bl4 { font-size: 46vw; background: var(--b4); filter: blur(9vw); mix-blend-mode: overlay; right: -.5em; top: -.62em; opacity: .8; }
+
+.sd { position: absolute; top: 0; height: 100vh; height: 100dvh; width: auto; z-index: 0; pointer-events: none; user-select: none; -webkit-user-drag: none; mix-blend-mode: screen; opacity: .95; filter: var(--tint); }
 .sl { left: 0; -webkit-mask-image: linear-gradient(90deg, #000 66%, transparent 100%); mask-image: linear-gradient(90deg, #000 66%, transparent 100%); }
 .sr { right: 0; -webkit-mask-image: linear-gradient(270deg, #000 66%, transparent 100%); mask-image: linear-gradient(270deg, #000 66%, transparent 100%); }
-.mt { overflow: hidden; }
 .mt-main, .mt-foot { position: relative; z-index: 1; }
 .mt-foot { position: absolute; }
+.mt-title { text-shadow: 0 0 1.2em rgba(255, 255, 255, .3); }
 @media (max-width: 768px) {
-  .sd { opacity: .42; }
+  .sd { opacity: .45; }
   .sl { left: -22vh; }
   .sr { right: -22vh; }
+  .bl1, .bl3 { filter: blur(40vw); }
 }
 </style>
 </head>
 <body>
 <div id="guard-page" class="mt">
+  <div class="bl bl1"></div><div class="bl bl2"></div><div class="bl bl3"></div><div class="bl bl4"></div>
   <img class="sd sl" src="_antiddos_static/art/side-l.webp" alt="" aria-hidden="true">
   <img class="sd sr" src="_antiddos_static/art/side-r.webp" alt="" aria-hidden="true">
   <main class="mt-main">
@@ -35,5 +51,6 @@
   </main>
   <footer class="mt-foot"><p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></footer>
 </div>
+<script>if (/[?&]c=cool/.test(location.search)) document.documentElement.setAttribute('data-c', 'cool');</script>
 </body>
 </html>
