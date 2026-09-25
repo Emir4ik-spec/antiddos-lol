@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="https://cdn.antiddos.lol/favicon.svg">
 <link rel="alternate icon" href="https://cdn.antiddos.lol/favicon.ico">
 <link rel="apple-touch-icon" href="https://cdn.antiddos.lol/apple-touch-icon.png">
-<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=27">
+<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=28">
 <style>[v-cloak]{display:none}</style>
 </head>
 <body>
@@ -28,13 +28,13 @@
           <div class="mt-ind">
             <template v-if="s.state === 'ready'">
               <input id="antiddos-check" class="mt-cbx-in" type="checkbox">
-              <label class="mt-cbx" for="antiddos-check" @click.prevent="click()"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19.5 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
+              <label class="mt-cbx" for="antiddos-check" @click.prevent="click()"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.75 12.25 L9.75 17.25 L19.25 6.75" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></label>
             </template>
             <span class="mt-ringwrap" :class="{ 'is-spin': !s.pct }" v-else-if="s.state === 'progress'" aria-hidden="true"><svg class="mt-ring" viewBox="0 0 24 24">
               <circle class="mt-ring-bg" cx="12" cy="12" r="9"/>
               <circle class="mt-ring-fg" cx="12" cy="12" r="9" :style="{ strokeDashoffset: 56.55 * (1 - (s.pct || 28) / 100) }"/>
             </svg></span>
-            <span class="mt-mark mt-ok" v-else-if="s.state === 'success'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19.5 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="mt-mark mt-ok" v-else-if="s.state === 'success'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.75 12.25 L9.75 17.25 L19.25 6.75" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span class="mt-mark mt-no" v-else-if="s.state === 'error'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7 L17 17 M17 7 L7 17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
           </div>
           <p class="mt-txt"><span v-text="text(s.key)"></span> <b class="mt-pct" v-if="s.pct && s.state === 'progress'" v-text="s.pct + '%'"></b></p>
