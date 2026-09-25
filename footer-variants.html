@@ -148,6 +148,29 @@ a:hover .pulse, a:focus-visible .pulse { animation: draw .9s cubic-bezier(.4,0,.
 .fd .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--m-faint); }
 .fd .node { font-family: 'Onest', sans-serif; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
 
+/* плашки от края страницы */
+.frame [data-page] { position: relative; z-index: 3; }
+.frame.pl { height: 400px; padding-top: 92px; padding-bottom: 100px; }
+.frame[data-mock="light"] .pt.beam::after { opacity: .55; }
+.sec { font-family: 'Unbounded', 'Onest', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: -0.005em; }
+.pt, .arch { position: absolute; left: 50%; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12px; isolation: isolate; text-align: left; text-decoration: none; color: inherit; transform: translateX(-50%); }
+.pt::before, .arch::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; transition: opacity .3s;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.pt { top: 0; width: min(88%, 380px); height: 62px; border-radius: 0 0 32px 32px; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--m-cyan) 5%, transparent)); }
+.pt::before { background: linear-gradient(180deg, var(--m-faint), color-mix(in srgb, var(--m-cyan) 65%, transparent)); }
+.arch { bottom: 0; width: min(88%, 360px); height: 66px; border-radius: 34px 34px 0 0; background: linear-gradient(0deg, transparent, color-mix(in srgb, var(--m-cyan) 5%, transparent)); transition: transform .3s cubic-bezier(.22, 1, .36, 1); }
+.arch::before { background: linear-gradient(0deg, var(--m-faint), color-mix(in srgb, var(--m-cyan) 65%, transparent)); }
+.arch:hover, .arch:focus-visible { transform: translate(-50%, -3px); outline: none; }
+.arch:hover::before { opacity: 1; }
+.ico { position: relative; display: grid; place-items: center; width: 30px; height: 30px; }
+.ico::before { content: ''; position: absolute; inset: -8px; border-radius: 50%; background: radial-gradient(closest-side, var(--m-glow), transparent); }
+.ico svg { position: relative; }
+.lock { width: 15px; height: 15px; color: var(--m-ok); flex: none; }
+.tx b { display: block; font-size: 10.5px; font-weight: 500; letter-spacing: .005em; }
+.tx i { display: block; margin-top: 3px; font-family: 'Onest', sans-serif; font-style: normal; font-size: 8.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--m-dim); }
+.pt.beam::after { content: ''; position: absolute; top: 100%; left: 6%; right: 6%; height: 200px; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, var(--m-glow), transparent); clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%); filter: blur(10px); }
+
 .note { color: var(--dim); font-size: 12.5px; max-width: 70ch; }
 
 @media (max-width: 720px) {
@@ -164,7 +187,7 @@ a:hover .pulse, a:focus-visible .pulse { animation: draw .9s cubic-bezier(.4,0,.
   <header>
     <div>
       <h1>Футер страницы проверки</h1>
-      <p>Четыре варианта вместо строки «AntiDDos DDos Mitigation». Наведите курсор на бейджи, там есть отклик.</p>
+      <p>Варианты вместо строки «AntiDDos DDos Mitigation»: сначала плашки от края страницы, ниже первый круг. Наведите курсор на бейджи и арки.</p>
     </div>
     <div class="seg" role="group" aria-label="Тема макета">
       <button type="button" id="t-dark" aria-pressed="true">Тёмная</button>
@@ -172,6 +195,35 @@ a:hover .pulse, a:focus-visible .pulse { animation: draw .9s cubic-bezier(.4,0,.
     </div>
   </header>
 
+  <h2 class="sec">Плашки от края страницы</h2>
+  <div class="grid">
+    <section class="item">
+      <div class="cap"><b>E. Арка снизу</b><span>Плашка растёт от нижнего края, рамка светлеет к свободной кромке</span></div>
+      <div class="frame pl" data-mock="dark">
+        <div data-page></div>
+        <a class="arch" href="#e" onclick="return false"><span class="ico" data-shield></span><span class="tx"><b>Protected by antiddos.lol</b><i>Node MOW1</i></span></a>
+      </div>
+    </section>
+
+    <section class="item">
+      <div class="cap"><b>F. Лампа сверху</b><span>Свисает сверху с доменом сайта, на карточку падает конус света</span></div>
+      <div class="frame pl" data-mock="dark">
+        <div data-page></div>
+        <div class="pt beam"><span class="ico" data-shield></span><span class="tx"><b>example.com</b><i>Security check</i></span></div>
+      </div>
+    </section>
+
+    <section class="item wide">
+      <div class="cap"><b>G. Обрамление</b><span>Сверху домен с замком, снизу арка с брендом, карточка между ними</span></div>
+      <div class="frame pl" data-mock="dark">
+        <div data-page></div>
+        <div class="pt"><svg class="lock" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="tx"><b>example.com</b></span></div>
+        <a class="arch" href="#g" onclick="return false"><span class="ico" data-shield></span><span class="tx"><b>Protected by antiddos.lol</b><i>Node MOW1</i></span></a>
+      </div>
+    </section>
+  </div>
+
+  <h2 class="sec">Первый круг</h2>
   <div class="grid">
     <section class="item">
       <div class="cap"><b>Сейчас</b><span>Текст 10px, без отклика</span></div>
@@ -228,7 +280,7 @@ a:hover .pulse, a:focus-visible .pulse { animation: draw .9s cubic-bezier(.4,0,.
     el.style.display = 'inline-flex';
     el.innerHTML = shield();
     var svg = el.firstChild;
-    svg.style.width = svg.style.height = (el.parentNode.classList.contains('seal') ? 22 : 18) + 'px';
+    svg.style.width = svg.style.height = (el.parentNode.classList.contains('seal') || el.classList.contains('ico') ? 22 : 18) + 'px';
   });
   document.querySelectorAll('[data-page]').forEach(function (el) {
     el.style.cssText = 'display:flex;flex-direction:column;align-items:center;width:100%';
