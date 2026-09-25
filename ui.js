@@ -104,23 +104,13 @@ function captchaSlot() {
 
 const core = window.__adl ? window.__adl.start({ set, captchaSlot }) : null
 
-// Прямой заход на cdn (ядро проверки отдаёт только защищаемый сайт): показываем дизайн
-// как демо, чтобы его можно было посмотреть. ?view=ready|progress|success|error|wait|fail
+// Прямой заход на cdn (ядро проверки отдаёт только защищаемый сайт): показываем дизайн как демо.
 const demo = !core && location.hostname === 'cdn.antiddos.lol'
 if (!core && !demo) {
   apply({ state: 'fatal', key: 'error', retry: true })
 }
 if (demo) {
-  const view = new URLSearchParams(location.search).get('view') || 'ready'
-  const views = {
-    ready: { mode: 'card', state: 'ready', key: 'checkbox' },
-    progress: { mode: 'card', state: 'progress', key: 'solving', pct: 42 },
-    success: { mode: 'card', state: 'success', key: 'success' },
-    error: { mode: 'card', state: 'error', key: 'error' },
-    wait: { mode: 'invisible', state: 'progress', key: 'loading' },
-    fail: { mode: 'card', state: 'fatal', key: 'error', retry: true }
-  }
-  apply(views[view] || views.ready)
+  apply({ mode: 'card', state: 'ready', key: 'checkbox' })
 }
 
 createApp({
