@@ -1,5 +1,5 @@
 /*! (c) antiddos.lol — proprietary, unauthorized copying prohibited */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap');
 
 :root {
   color-scheme: dark;
@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { min-height: 100%; background: #000; }
-body { min-width: 300px; font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-width: 300px; font-family: 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 button, input { font: inherit; }
 
@@ -24,15 +24,15 @@ button, input { font: inherit; }
 .mt-light { background: var(--bg); }
 
 .mt-main { width: 100%; max-width: 560px; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: -3vh; }
-.mt-title { font-size: clamp(24px, 4.6vw, 32px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
-.mt-sub { margin-top: 14px; font-size: 13px; font-weight: 500; line-height: 1.5; opacity: 0.92; }
-.mt-sub-wait { margin-top: 26px; font-size: 14px; max-width: 460px; }
+.mt-title { font-family: 'Unbounded', 'Onest', system-ui, sans-serif; font-size: clamp(19px, 3.4vw, 27px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+.mt-sub { margin-top: 14px; font-size: 14px; font-weight: 400; line-height: 1.5; opacity: 0.92; }
+.mt-sub-wait { margin-top: 24px; font-size: 14.5px; max-width: 460px; }
 
 .mt-card { width: min(100%, 306px); margin-top: 24px; min-height: 50px; background: var(--card); border: 1px solid var(--card-line); border-radius: 12px; padding: 0 16px; display: flex; align-items: center; transition: opacity 0.16s ease; }
 .mt-card.mt-out { opacity: 0; }
 .mt-row { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; text-align: left; }
 .mt-col { flex-direction: column; align-items: stretch; gap: 10px; padding: 12px 0; }
-.mt-txt { font-family: Roboto, 'Montserrat', system-ui, sans-serif; font-size: 13px; font-weight: 500; line-height: 1.35; }
+.mt-txt { font-size: 14px; font-weight: 500; line-height: 1.35; }
 .mt-pct { font-weight: 600; opacity: 0.8; }
 
 .mt-cbx-in { position: absolute; opacity: 0; pointer-events: none; }
@@ -49,18 +49,18 @@ button, input { font: inherit; }
 .mt-no { color: var(--no); }
 .mt-widget { display: flex; justify-content: center; min-height: 65px; }
 
-.mt-btn { margin-top: 26px; height: 40px; padding: 0 22px; border-radius: 10px; border: 1px solid var(--card-line); background: var(--card); color: var(--fg); font-weight: 600; font-size: 13px; cursor: pointer; }
+.mt-btn { margin-top: 26px; height: 40px; padding: 0 22px; border-radius: 10px; border: 1px solid var(--card-line); background: var(--card); color: var(--fg); font-weight: 600; font-size: 14px; cursor: pointer; }
 .mt-btn:hover { border-color: rgba(255, 255, 255, 0.28); }
 
 .mt-foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; text-align: center; }
-.mt-brand { font-size: 10px; font-weight: 700; letter-spacing: 0.01em; }
-.mt-contact { font-size: 10px; font-weight: 500; opacity: 0.92; }
+.mt-brand { font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
+.mt-contact { font-size: 11px; font-weight: 400; opacity: 0.92; }
 .mt-contact a { text-decoration: none; }
 .mt-contact a:hover { text-decoration: underline; }
 
 @media (max-width: 480px) {
   .mt { padding-bottom: 96px; }
-  .mt-sub { font-size: 12px; }
+  .mt-sub { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mt-spin { animation-duration: 2.4s; }
