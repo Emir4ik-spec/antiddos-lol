@@ -52,8 +52,9 @@ button, input { font: inherit; }
 .mt-ring { width: 26px; height: 26px; transform: rotate(-90deg); }
 .mt-ring-bg { fill: none; stroke: rgba(255, 255, 255, 0.13); stroke-width: 2.4; }
 .mt-ring-fg { fill: none; stroke: var(--brand); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 56.55; transition: stroke-dashoffset 0.25s ease; }
-.mt-ring.is-spin { animation: mt-rot 1s linear infinite; }
-@keyframes mt-rot { to { transform: rotate(270deg); } }
+.mt-ringwrap { width: 26px; height: 26px; display: grid; }
+.mt-ringwrap.is-spin { animation: mt-rot 1s linear infinite; }
+@keyframes mt-rot { to { transform: rotate(360deg); } }
 @keyframes mt-shake { 20% { transform: translateX(-4px); } 50% { transform: translateX(4px); } 80% { transform: translateX(-2px); } }
 
 .mt-mark { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; }
@@ -95,7 +96,7 @@ button, input { font: inherit; }
   .mt-sub { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mt-ring.is-spin { animation-duration: 2.4s; }
+  .mt-ringwrap.is-spin { animation-duration: 2.4s; }
   .mt-card { transition: none; }
   .mt-card.is-error { animation: none; }
   .mt-ok path { animation: none; stroke-dashoffset: 0; }
