@@ -97,6 +97,12 @@ button, input { font: inherit; }
 .mt-err .mt-btn { margin-top: 30px; }
 .mt-light .mt-err .mt-code { background: linear-gradient(180deg, #0b0b0c 8%, rgba(0, 0, 0, 0.06) 96%); -webkit-background-clip: text; background-clip: text; }
 
+.mt-card::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; background: linear-gradient(270deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.035) 38%, transparent 62%); }
+.mt-by img { opacity: 0.85; filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4)); }
+.mt-by span { color: rgba(255, 255, 255, 0.7); }
+.mt-light .mt-card::after { background: linear-gradient(270deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.4) 40%, transparent 65%); }
+.mt-light .mt-by img { opacity: 0.6; filter: none; }
+
 .mt-foot { position: absolute; left: 0; right: 0; bottom: 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 20px; text-align: center; }
 .mt-brand { font-size: 10px; font-weight: 600; letter-spacing: 0.01em; }
 .mt-contact { font-size: 10px; font-weight: 400; opacity: 0.92; }
