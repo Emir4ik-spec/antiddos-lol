@@ -19,10 +19,6 @@
         <a class="mt-btn" href="/" data-ru="На главную">Home</a>
       </div>
     </main>
-    <main class="mt-main" id="direct" hidden>
-      <h1 class="mt-title" data-ru="Страница открывается только через защищаемый сайт">This page only opens through a protected website</h1>
-      <div class="mt-actions"><a class="mt-btn mt-btn-primary" href="https://antiddos.lol">antiddos.lol</a></div>
-    </main>
     <footer class="mt-foot">
       <p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p>
     </footer>
@@ -32,13 +28,6 @@
   if (/^ru\b/i.test(navigator.language || '')) {
     document.documentElement.lang = 'ru'
     document.querySelectorAll('[data-ru]').forEach(function (el) { el.textContent = el.getAttribute('data-ru') })
-  }
-  // Страницу отдаёт защищаемый сайт вместо ответа с ошибкой; напрямую с адреса cdn она ничего не показывает.
-  if (location.hostname === 'cdn.antiddos.lol') {
-    document.title = 'AntiDDos'
-    document.getElementById('err').hidden = true
-    document.getElementById('direct').hidden = false
-    return
   }
   document.getElementById('primary').onclick = function () { location.reload() }
 })()
