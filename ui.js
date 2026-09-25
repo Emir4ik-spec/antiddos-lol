@@ -26,7 +26,7 @@ const EN = {
   directTitle: 'antiddos.lol'
 }
 const RU = {
-  by: 'От antiddos.lol',
+  by: 'By antiddos.lol',
   title: 'Требуется дополнительная проверка',
   lead: 'Пройдите проверку ниже, чтобы продолжить',
   checkbox: 'Я не робот',
