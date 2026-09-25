@@ -44,8 +44,8 @@ button, input { font: inherit; }
 .mt-card::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpath%20d='M7%204.4v5.2M4.4%207h5.2'%20transform='rotate(24%207%207)'%20stroke='white'%20stroke-opacity='0.11'%20stroke-width='0.9'%20stroke-linecap='round'/%3E%3C/svg%3E"); background-size: 14px 14px; }
 .mt-card > * { position: relative; z-index: 1; }
 .mt-light .mt-card::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%3E%3Cpath%20d='M7%204.4v5.2M4.4%207h5.2'%20transform='rotate(24%207%207)'%20stroke='black'%20stroke-opacity='0.1'%20stroke-width='0.9'%20stroke-linecap='round'/%3E%3C/svg%3E"); }
-.mt-card.is-success { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); }
-.mt-card.is-error { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16); animation: mt-shake 0.36s ease; }
+.mt-card.is-success { box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.55); }
+.mt-card.is-error { box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.6); animation: mt-shake 0.36s ease; }
 .mt-card.mt-out { opacity: 0; }
 .mt-col { width: 100%; height: auto; display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 10px 0; }
 
@@ -68,10 +68,10 @@ button, input { font: inherit; }
 
 .mt-mark { width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; }
 .mt-mark svg { width: 13px; height: 13px; }
-.mt-ok { color: #000; background: #fff; }
+.mt-ok { color: #fff; background: #22c55e; }
 .mt-ok path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: mt-draw 0.28s 0.05s ease forwards; }
 @keyframes mt-draw { to { stroke-dashoffset: 0; } }
-.mt-no { color: #fff; background: #2a2a2c; }
+.mt-no { color: #fff; background: #ef4444; }
 
 .mt-by { flex: none; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 3px; color: inherit; text-decoration: none; cursor: pointer; }
 .mt-by img { width: 20px; height: 20px; opacity: 0.45; transition: opacity 0.2s ease; }
