@@ -8,37 +8,35 @@
 <link rel="stylesheet" href="verify.css?v=36">
 <style>
 .art { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-.art img { position: absolute; display: block; height: auto; user-select: none; -webkit-user-drag: none; }
-.art .p { position: absolute; inset: 0; }
-.art img { mix-blend-mode: screen; transform: rotate(var(--r)); }
-.a1 { width: 118vmin; left: -40vmin; top: -44vmin; opacity: .95; --r: -14deg; }
-.a5 { width: 112vmin; left: -42vmin; bottom: -44vmin; opacity: .9; filter: brightness(2.6) contrast(1.08); --r: 12deg; }
-.a4 { width: 118vmin; right: -38vmin; top: -42vmin; opacity: .95; --r: 16deg; }
-.a3 { width: 112vmin; right: -40vmin; bottom: -46vmin; opacity: .9; --r: -20deg; }
-.art::after { content: ''; position: absolute; inset: 0; background: radial-gradient(60% 55% at 50% 50%, rgba(0, 0, 0, .55), transparent 75%); }
-
-.mt-light { background-image: linear-gradient(180deg, #f1f1f2, #fbfbfb 45%, #efeff0); }
-.mt-light .art img { mix-blend-mode: multiply; filter: invert(1) contrast(1.05); opacity: .85; }
-.mt-light .art .a5 { filter: invert(1) brightness(.75) contrast(1.05); }
-.mt-light .art::after { background: radial-gradient(60% 55% at 50% 50%, rgba(255, 255, 255, .8), transparent 75%); }
+.art .p { position: absolute; inset: 0; mix-blend-mode: screen; opacity: .62; }
+.art .l { -webkit-mask-image: linear-gradient(90deg, #000 8%, rgba(0, 0, 0, .55) 22%, transparent 38%); mask-image: linear-gradient(90deg, #000 8%, rgba(0, 0, 0, .55) 22%, transparent 38%); }
+.art .r { -webkit-mask-image: linear-gradient(270deg, #000 8%, rgba(0, 0, 0, .55) 22%, transparent 38%); mask-image: linear-gradient(270deg, #000 8%, rgba(0, 0, 0, .55) 22%, transparent 38%); }
+.art img { position: absolute; display: block; height: auto; user-select: none; -webkit-user-drag: none; transform: rotate(var(--r)); filter: brightness(.82) contrast(.92); }
+.a1 { width: 118vmin; left: -40vmin; top: -44vmin; --r: -14deg; }
+.a5 { width: 112vmin; left: -42vmin; bottom: -44vmin; filter: brightness(2.1) contrast(.95); --r: 12deg; }
+.a4 { width: 118vmin; right: -38vmin; top: -42vmin; --r: 16deg; }
+.a3 { width: 112vmin; right: -40vmin; bottom: -46vmin; filter: brightness(.7) contrast(.95); --r: -20deg; }
 .mt-main, .mt-foot { position: relative; z-index: 1; }
 .mt-foot { position: absolute; }
 
 @media (max-width: 720px) {
-  .a1 { width: 92vw; left: -38vw; top: -16vw; opacity: .6; }
-  .a4 { width: 92vw; right: -36vw; top: 4vh; opacity: .6; }
-  .a5 { width: 90vw; left: -34vw; bottom: -14vw; opacity: .6; }
-  .a3 { width: 90vw; right: -34vw; bottom: 8vh; opacity: .6; }
+  .art .p { opacity: .5; }
+  .art .l { -webkit-mask-image: linear-gradient(90deg, #000 6%, transparent 62%); mask-image: linear-gradient(90deg, #000 6%, transparent 62%); }
+  .art .r { -webkit-mask-image: linear-gradient(270deg, #000 6%, transparent 62%); mask-image: linear-gradient(270deg, #000 6%, transparent 62%); }
+  .a1 { width: 92vw; left: -38vw; top: -16vw; }
+  .a4 { width: 92vw; right: -36vw; top: 4vh; }
+  .a5 { width: 90vw; left: -34vw; bottom: -14vw; }
+  .a3 { width: 90vw; right: -34vw; bottom: 8vh; }
 }
 </style>
 </head>
 <body>
 <div id="guard-page" class="mt">
   <div class="art" aria-hidden="true">
-    <div class="p"><img class="a4" src="_antiddos_static/art/4.webp" alt=""></div>
-    <div class="p"><img class="a1" src="_antiddos_static/art/1.webp" alt=""></div>
-    <div class="p"><img class="a3" src="_antiddos_static/art/3.webp" alt=""></div>
-    <div class="p"><img class="a5" src="_antiddos_static/art/5.webp" alt=""></div>
+    <div class="p r"><img class="a4" src="_antiddos_static/art/4.webp" alt=""></div>
+    <div class="p l"><img class="a1" src="_antiddos_static/art/1.webp" alt=""></div>
+    <div class="p r"><img class="a3" src="_antiddos_static/art/3.webp" alt=""></div>
+    <div class="p l"><img class="a5" src="_antiddos_static/art/5.webp" alt=""></div>
   </div>
   <main class="mt-main">
     <h1 class="mt-title">Additional Verification Required</h1>
@@ -52,8 +50,6 @@
   <footer class="mt-foot"><p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></footer>
 </div>
 <script>
-var pg = document.getElementById('guard-page');
-if (/[?&]light/.test(location.search) || (!/[?&]dark/.test(location.search) && matchMedia('(prefers-color-scheme: light)').matches)) pg.classList.add('mt-light');
 </script>
 </body>
 </html>
