@@ -50,7 +50,7 @@ button, input { font: inherit; }
 .mt-pct { font-weight: 500; opacity: 0.55; }
 
 .mt-cbx-in { position: absolute; opacity: 0; pointer-events: none; }
-.mt-cbx { width: 20px; height: 20px; border-radius: 7px; border: 1.5px solid rgba(255, 255, 255, 0.3); background: transparent; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: transparent; transition: border-color 0.18s, background 0.18s; }
+.mt-cbx { width: 20px; height: 20px; border-radius: 6px; border: 0; background: rgba(255, 255, 255, 0.09); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: transparent; transition: border-color 0.18s, background 0.18s; }
 .mt-cbx svg { width: 13px; height: 13px; }
 .mt-cbx-in:focus-visible + .mt-cbx { outline: 2px solid rgba(255, 255, 255, 0.7); outline-offset: 3px; }
 
@@ -62,12 +62,12 @@ button, input { font: inherit; }
 @keyframes mt-rot { to { transform: rotate(360deg); } }
 @keyframes mt-shake { 20% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 80% { transform: translateX(-2px); } }
 
-.mt-mark { width: 20px; height: 20px; border-radius: 7px; display: grid; place-items: center; }
+.mt-mark { width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; }
 .mt-mark svg { width: 13px; height: 13px; }
-.mt-ok { color: #06140a; background: var(--ok); }
+.mt-ok { color: #000; background: #fff; }
 .mt-ok path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: mt-draw 0.28s 0.05s ease forwards; }
 @keyframes mt-draw { to { stroke-dashoffset: 0; } }
-.mt-no { color: #180504; background: var(--no); }
+.mt-no { color: #fff; background: rgba(255, 255, 255, 0.16); }
 
 .mt-by { flex: none; display: flex; align-items: center; opacity: 0.4; user-select: none; }
 .mt-by img { width: 18px; height: 18px; }
