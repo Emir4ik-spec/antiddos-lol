@@ -19,34 +19,10 @@
 .mt-main::before { content: ''; position: absolute; left: 50%; top: 34%; width: min(560px, 96vw); height: 200px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(255,255,255,.075), rgba(255,255,255,.025) 55%, transparent); filter: blur(18px); pointer-events: none; z-index: -1; }
 .mt-title { text-shadow: 0 0 .5em rgba(255,255,255,.2), 0 0 1.4em rgba(200,220,255,.14); }
 .mt-sub { text-shadow: 0 0 1em rgba(255,255,255,.12); }
-.mt { --k: 1; }
-.bl { position: absolute; z-index: 0; pointer-events: none; opacity: .6; will-change: transform; transition: transform 16s cubic-bezier(.175, .885, .32, 1.275); animation: bl-in 1s ease both; }
-.bl-c { width: min(380px, 80vw); height: min(380px, 80vw); border-radius: 9999px; filter: blur(110px); transform: translateZ(0); backface-visibility: hidden; }
-.bl-a { top: -200px; right: 35%; }
-.bl-a .bl-c { background: #1aa3ff; opacity: .5; }
-.bl-b { bottom: -200px; right: 15%; }
-.bl-b .bl-c { background: #38bdf8; opacity: .42; }
-.bl-c3 { bottom: -200px; left: -10%; }
-.bl-c3 .bl-c { background: #0e8bff; opacity: .5; }
-.bl-a { transform: translate3d(calc(var(--k) * -75px), calc(var(--k) * 25px), 0) scale(1.05); }
-.bl-b { transform: translate3d(calc(var(--k) * 75px), calc(var(--k) * -25px), 0) scale(1.05); }
-.bl-c3 { transform: translate3d(calc(var(--k) * 400px), calc(var(--k) * -75px), 0) scale(1.05); }
-.mt[data-s="2"] .bl-a { transform: translate3d(calc(var(--k) * -250px), calc(var(--k) * 300px), 0) scale(1.1); }
-.mt[data-s="2"] .bl-b { transform: translate3d(calc(var(--k) * -100px), calc(var(--k) * -550px), 0) scale(1.1); }
-.mt[data-s="2"] .bl-c3 { transform: translate3d(calc(var(--k) * 450px), calc(var(--k) * -550px), 0) scale(1.1); }
-.mt[data-s="3"] .bl-a { transform: translate3d(calc(var(--k) * -400px), calc(var(--k) * 300px), 0) scale(1); }
-.mt[data-s="3"] .bl-b { transform: translate3d(calc(var(--k) * 150px), calc(var(--k) * -550px), 0) scale(1); }
-.mt[data-s="3"] .bl-c3 { transform: translate3d(calc(var(--k) * 900px), calc(var(--k) * -150px), 0) scale(1); }
-@keyframes bl-in { from { opacity: 0; } to { opacity: .6; } }
-@media (max-width: 768px) { .mt { --k: .4; } }
-@media (prefers-reduced-motion: reduce) { .bl { transition: none; animation: none; } }
 </style>
 </head>
 <body>
 <div id="guard-page" class="mt">
-  <div class="bl bl-a"><div class="bl-c"></div></div>
-  <div class="bl bl-b"><div class="bl-c"></div></div>
-  <div class="bl bl-c3"><div class="bl-c"></div></div>
   <main class="mt-main">
     <h1 class="mt-title">Additional Verification Required</h1>
     <p class="mt-sub">Please complete the CAPTCHA below to proceed</p>
@@ -58,20 +34,5 @@
   </main>
   <div class="pw"><div class="pw-in"><img src="_antiddos_static/brand-logo.svg" alt=""><p><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></div></div>
 </div>
-<script>
-(function () {
-  var page = document.getElementById('guard-page');
-  if (!page || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-  var s = 1, timer = null;
-  function set(v) { s = v; page.setAttribute('data-s', String(v)); }
-  function tick() { set(s === 3 ? 1 : s + 1); }
-  function start() { if (!timer) timer = setInterval(tick, 3000); }
-  function stop() { clearInterval(timer); timer = null; }
-  set(1);
-  setTimeout(function () { set(2); }, 500);
-  start();
-  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
-})();
-</script>
 </body>
 </html>
