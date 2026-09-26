@@ -19,10 +19,23 @@
 .mt-main::before { content: ''; position: absolute; left: 50%; top: 34%; width: min(560px, 96vw); height: 200px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(255,255,255,.075), rgba(255,255,255,.025) 55%, transparent); filter: blur(18px); pointer-events: none; z-index: -1; }
 .mt-title { text-shadow: 0 0 .5em rgba(255,255,255,.2), 0 0 1.4em rgba(200,220,255,.14); }
 .mt-sub { text-shadow: 0 0 1em rgba(255,255,255,.12); }
+.bl { position: absolute; z-index: 0; pointer-events: none; opacity: .6; will-change: transform; animation: bl-drift 20s ease-in-out infinite alternate; }
+.bl-c { width: min(500px, 90vw); height: min(500px, 90vw); border-radius: 9999px; filter: blur(200px); transform: translateZ(0); backface-visibility: hidden; }
+.bl-a { top: -200px; right: 35%; margin-right: -75px; --dx: 70px; --dy: 50px; animation-duration: 19s; }
+.bl-a .bl-c { background: #0ea5e9; opacity: .6; }
+.bl-b { bottom: -200px; right: 15%; margin-right: -75px; --dx: -60px; --dy: -45px; animation-duration: 23s; animation-delay: -7s; }
+.bl-b .bl-c { background: #22d3ee; opacity: .5; }
+.bl-c3 { bottom: -200px; left: 4%; --dx: 80px; --dy: -55px; animation-duration: 27s; animation-delay: -13s; }
+.bl-c3 .bl-c { background: #4f46e5; opacity: .6; }
+@keyframes bl-drift { 0% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(var(--dx), var(--dy), 0) scale(1.12); } 100% { transform: translate3d(calc(var(--dx) * -.6), calc(var(--dy) * -.8), 0) scale(.94); } }
+@media (prefers-reduced-motion: reduce) { .bl { animation: none; } }
 </style>
 </head>
 <body>
 <div id="guard-page" class="mt">
+  <div class="bl bl-a"><div class="bl-c"></div></div>
+  <div class="bl bl-b"><div class="bl-c"></div></div>
+  <div class="bl bl-c3"><div class="bl-c"></div></div>
   <main class="mt-main">
     <h1 class="mt-title">Additional Verification Required</h1>
     <p class="mt-sub">Please complete the CAPTCHA below to proceed</p>
