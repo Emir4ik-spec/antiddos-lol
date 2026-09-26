@@ -9,8 +9,13 @@
 <style>
 .mt { overflow: hidden; }
 .mt::after { content: ''; position: fixed; inset: 0; z-index: 5; pointer-events: none; mix-blend-mode: soft-light; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.mt-main, .mt-foot { position: relative; z-index: 1; }
-.mt-foot { position: absolute; }
+.mt-main { position: relative; z-index: 1; }
+.pw { position: fixed; left: 0; right: 0; bottom: 1.5rem; z-index: 51; display: flex; justify-content: center; padding: 1rem; pointer-events: none; }
+.pw-in { pointer-events: auto; display: flex; align-items: center; gap: 1rem; padding: .75rem 1rem; border-radius: 1rem; background: rgba(38,38,38,.2); box-shadow: inset 0 0 0 1px rgba(64,64,64,.2), 0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.pw-in img { width: 1.5rem; height: auto; }
+.pw-in p { margin: 0; font-family: 'Onest', system-ui, sans-serif; font-size: 16px; font-weight: 600; line-height: 1.5; color: #e5e5e5; }
+.pw-in a { color: inherit; text-decoration: none; transition: opacity .15s ease; }
+.pw-in a:hover { opacity: .6; }
 </style>
 </head>
 <body>
@@ -24,7 +29,7 @@
       <a class="mt-by" href="https://antiddos.lol" target="_blank" rel="noopener"><span>By antiddos.lol</span><img src="_antiddos_static/brand-logo.svg" alt=""></a>
     </div>
   </main>
-  <footer class="mt-foot"><p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></footer>
+  <div class="pw"><div class="pw-in"><img src="_antiddos_static/brand-logo.svg" alt=""><p><a href="https://antiddos.lol" target="_blank" rel="noopener">AntiDDos DDos Mitigation</a></p></div></div>
 </div>
 </body>
 </html>
