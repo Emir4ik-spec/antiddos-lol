@@ -16,8 +16,8 @@ const EN = {
   success: 'Done. Redirecting...',
   error: 'Verification failed',
   retry: 'Retry',
-  waitTitle: 'Wait a moment..',
-  waitText: 'We are currently checking your browser. This page will refresh automatically soon.',
+  waitTitle: 'Please wait a few seconds',
+  waitText: 'You will be redirected automatically.',
   failTitle: 'Verification failed',
   errorFatal: 'Something went wrong. Please try again.',
   contact: 'If you are experiencing any issues, please contact us at:',
@@ -37,8 +37,8 @@ const RU = {
   success: 'Готово. Перенаправляем...',
   error: 'Проверка не пройдена',
   retry: 'Повторить',
-  waitTitle: 'Подождите немного..',
-  waitText: 'Мы проверяем ваш браузер. Страница обновится автоматически.',
+  waitTitle: 'Подождите несколько секунд',
+  waitText: 'Мы автоматически перенаправим вас.',
   failTitle: 'Проверка не пройдена',
   errorFatal: 'Что-то пошло не так. Повторите попытку.',
   contact: 'Если возникли проблемы, напишите нам:',
@@ -68,7 +68,7 @@ function apply(patch) {
   store.leaving = false
   clearTimeout(slowTimer)
   store.slow = false
-  if (store.mode === 'passive' && store.state === 'progress') {
+  if (store.mode === 'invisible' && store.state === 'progress') {
     slowTimer = setTimeout(() => { store.slow = true }, SLOW_MS)
   }
 }
@@ -120,7 +120,7 @@ createApp({
   text: (key) => texts[key] || '',
   staticBase: STATIC,
   get showWait() {
-    return store.state !== 'fatal' && (store.mode === 'invisible' || (store.mode === 'passive' && store.slow))
+    return store.state !== 'fatal' && (store.mode === 'passive' || (store.mode === 'invisible' && store.slow))
   },
   click: () => {
     if (core) return core.click()
