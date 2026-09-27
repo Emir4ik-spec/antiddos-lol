@@ -112,7 +112,12 @@ if (!core && !demo) {
   apply({ state: 'fatal', key: 'error', retry: true })
 }
 if (demo) {
-  apply({ mode: 'card', state: 'ready', key: 'checkbox' })
+  const demoMode = new URLSearchParams(location.search).get('demo')
+  if (demoMode === 'invisible' || demoMode === 'passive') {
+    apply({ mode: demoMode, state: 'progress', key: 'loading' })
+  } else {
+    apply({ mode: 'card', state: 'ready', key: 'checkbox' })
+  }
 }
 
 createApp({
