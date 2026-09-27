@@ -56,7 +56,7 @@
 
     <footer class="mt-foot" v-if="s.state !== 'boot'">
       <p class="mt-brand"><a href="https://antiddos.lol" target="_blank" rel="noopener">Powered by antiddos.lol</a></p>
-      <p class="mt-contact" v-if="showWait || s.state === 'fatal'"><span v-text="text('contact')"></span> <a href="mailto:support@antiddos.lol">support@antiddos.lol</a></p>
+      <p class="mt-contact" v-if="s.state === 'fatal'"><span v-text="text('contact')"></span> <a href="mailto:support@antiddos.lol">support@antiddos.lol</a></p>
     </footer>
   </div>
 
