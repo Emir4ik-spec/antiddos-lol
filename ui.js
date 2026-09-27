@@ -113,8 +113,8 @@ if (!core && !demo) {
 }
 if (demo) {
   const demoMode = new URLSearchParams(location.search).get('demo')
-  if (demoMode === 'invisible' || demoMode === 'passive') {
-    apply({ mode: demoMode, state: 'progress', key: 'loading' })
+  if (demoMode === 'passive') {
+    apply({ mode: 'passive', state: 'progress', key: 'loading' })
   } else {
     apply({ mode: 'card', state: 'ready', key: 'checkbox' })
   }
