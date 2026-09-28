@@ -143,14 +143,19 @@ button, input { font: inherit; }
 .mt-t[data-k="stageSecurity"], .mt-t[data-k="solving"] { animation-name: mt-tin-b; }
 @keyframes mt-tin-a { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mt-tin-b { from { opacity: 0; } to { opacity: 1; } }
-.mt-card .mt-steps { opacity: 0; transition: opacity 0.3s ease 0.12s; position: absolute; left: 16px; right: 16px; bottom: 5px; height: 2px; display: flex; gap: 4px; pointer-events: none; filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)); }
+.mt-card .mt-steps { opacity: 0; transition: opacity 0.3s ease 0.12s; position: absolute; left: 16px; right: 16px; bottom: 5px; height: 3px; display: flex; gap: 5px; pointer-events: none; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.28)); }
 .mt-card .mt-steps.is-on { opacity: 1; transition-delay: 0s; }
-.mt-steps i { flex: 1; display: block; border-radius: 2px; overflow: hidden; background: rgba(255, 255, 255, 0.1); }
-.mt-steps b { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), #fff); transform: scaleX(0); transform-origin: left; transition: transform 0.38s cubic-bezier(0.3, 0.7, 0.3, 1); }
-.mt-steps .is-done b { transform: scaleX(1); transition-duration: 0.2s; }
+.mt-steps i { flex: 1; display: block; border-radius: 3px; overflow: hidden; background: rgba(255, 255, 255, 0.09); }
+.mt-steps b { position: relative; display: block; height: 100%; border-radius: 3px; overflow: hidden; background: linear-gradient(90deg, rgba(255, 255, 255, 0.55), #fff); transform: scaleX(0); transform-origin: left; transition: transform 0.25s linear; }
+.mt-steps .is-cur b { animation: mt-fill 0.36s linear; }
+.mt-steps .is-cur b::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent); transform: translateX(-100%); animation: mt-sheen 0.7s ease-in-out infinite; }
+.mt-steps .is-done b { transform: scaleX(1); transition-duration: 0.18s; }
+@keyframes mt-fill { from { transform: scaleX(0); } }
+@keyframes mt-sheen { to { transform: translateX(100%); } }
 .mt-light .mt-card .mt-steps { filter: none; }
-.mt-light .mt-steps i { background: rgba(0, 0, 0, 0.1); }
-.mt-light .mt-steps b { background: linear-gradient(90deg, rgba(11, 11, 12, 0.5), #0b0b0c); }
-@media (prefers-reduced-motion: reduce) { .mt-t { animation: none; } .mt-steps b { transition: none; } }
+.mt-light .mt-steps i { background: rgba(0, 0, 0, 0.09); }
+.mt-light .mt-steps b { background: linear-gradient(90deg, rgba(11, 11, 12, 0.55), #0b0b0c); }
+.mt-light .mt-steps .is-cur b::after { background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent); }
 .mt-by { transition: transform 0.2s ease; }
 .mt-card:has(.mt-steps.is-on) .mt-by { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .mt-t, .mt-steps .is-cur b, .mt-steps .is-cur b::after { animation: none; } .mt-steps b { transition: none; } }

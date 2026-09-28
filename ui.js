@@ -151,7 +151,8 @@ createApp({
     return store.pct ? store.pct + '%' : ''
   },
   get bar() {
-    return { transform: 'scaleX(' + (store.pct ? store.pct / 100 : 0.88) + ')' }
+    const last = store.key === 'solving'
+    return { transform: 'scaleX(' + (last ? (store.pct ? Math.max(0.12, store.pct / 100) : 0.92) : 1) + ')' }
   },
   get showWait() {
     return store.state !== 'fatal' && (store.mode === 'passive' || (store.mode === 'invisible' && store.slow))
