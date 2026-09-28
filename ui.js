@@ -10,6 +10,9 @@ const EN = {
   lead: 'Please complete the CAPTCHA below to proceed',
   checkbox: "I'm not a robot",
   loading: 'Preparing the check...',
+  stageLoad: 'Loading...',
+  stageSecurity: 'Loading security data...',
+  stageBrowser: 'Collecting browser data...',
   solving: 'Running the check...',
   captcha: 'Please complete the check above',
   verifying: 'Verifying...',
@@ -31,6 +34,9 @@ const RU = {
   lead: 'Пройдите проверку ниже, чтобы продолжить',
   checkbox: 'Я не робот',
   loading: 'Подготовка проверки...',
+  stageLoad: 'Загрузка...',
+  stageSecurity: 'Загрузка данных безопасности...',
+  stageBrowser: 'Сбор данных браузера...',
   solving: 'Выполнение проверки...',
   captcha: 'Пройдите проверку выше',
   verifying: 'Проверка...',
@@ -116,8 +122,15 @@ if (demo) {
   if (demoMode === 'passive') {
     apply({ mode: 'passive', state: 'progress', key: 'loading' })
   } else {
-    apply({ mode: 'card', state: 'ready', key: 'checkbox' })
+    demoStages()
   }
+}
+
+function demoStages() {
+  apply({ mode: 'card', state: 'progress', key: 'stageLoad', pct: 0 })
+  const keys = ['stageSecurity', 'stageBrowser', 'solving']
+  keys.forEach((key, i) => setTimeout(() => set({ state: 'progress', key, pct: 0 }), 350 * (i + 1)))
+  setTimeout(() => set({ state: 'ready', key: 'checkbox' }), 350 * (keys.length + 1))
 }
 
 createApp({
@@ -130,9 +143,9 @@ createApp({
   click: () => {
     if (core) return core.click()
     if (!demo) return
-    set({ state: 'progress', key: 'solving', pct: 0 })
-    setTimeout(() => set({ state: 'success', key: 'success' }), 1500)
-    setTimeout(() => set({ state: 'ready', key: 'checkbox' }), 3200)
+    set({ state: 'progress', key: 'verifying', pct: 0 })
+    setTimeout(() => set({ state: 'success', key: 'success' }), 900)
+    setTimeout(demoStages, 2600)
   },
   retryClick: () => (core ? core.retry() : location.reload())
 }).mount('#guard-page')
