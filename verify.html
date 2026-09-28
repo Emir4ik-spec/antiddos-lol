@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="https://cdn.antiddos.lol/favicon.svg">
 <link rel="alternate icon" href="https://cdn.antiddos.lol/favicon.ico">
 <link rel="apple-touch-icon" href="https://cdn.antiddos.lol/apple-touch-icon.png">
-<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css">
+<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=38">
 <style>[v-cloak]{display:none}</style>
 </head>
 <body>
@@ -37,7 +37,8 @@
             <span class="mt-mark mt-ok" v-else-if="s.state === 'success'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.75 12.25 L9.75 17.25 L19.25 6.75" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span class="mt-mark mt-no" v-else-if="s.state === 'error'" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7 L17 17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M17 7 L7 17" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>
           </div>
-          <p class="mt-txt"><span v-text="text(s.key)"></span> <b class="mt-pct" v-if="s.pct && s.state === 'progress'" v-text="s.pct + '%'"></b></p>
+          <p class="mt-txt"><span class="mt-t" :data-k="s.key" v-text="text(s.key)"></span> <b class="mt-pct" v-if="tail" v-text="tail"></b></p>
+          <div class="mt-steps" :class="{ 'is-on': step > 0 }" aria-hidden="true"><i :class="{ 'is-done': 1 < step, 'is-cur': 1 === step }"><b :style="1 === step ? bar : null"></b></i><i :class="{ 'is-done': 2 < step, 'is-cur': 2 === step }"><b :style="2 === step ? bar : null"></b></i><i :class="{ 'is-done': 3 < step, 'is-cur': 3 === step }"><b :style="3 === step ? bar : null"></b></i><i :class="{ 'is-done': 4 < step, 'is-cur': 4 === step }"><b :style="4 === step ? bar : null"></b></i></div>
           <a class="mt-by" href="https://antiddos.lol" target="_blank" rel="noopener" :aria-label="text('by')"><span v-text="text('by')"></span><img :src="staticBase + 'brand-logo.svg'" alt=""></a>
         </template>
       </div>
@@ -61,6 +62,6 @@
   </div>
 
 <script src="/api/guard/core"></script>
-<script type="module" src="https://cdn.antiddos.lol/ui.js?v=28"></script>
+<script type="module" src="https://cdn.antiddos.lol/ui.js?v=29"></script>
 </body>
 </html>

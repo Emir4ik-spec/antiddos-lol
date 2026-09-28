@@ -137,3 +137,19 @@ button, input { font: inherit; }
 .mt-light .mt-code { filter: none; }
 .mt-light .mt-brand { background: rgba(255,255,255,.7); color: #1a1d20; text-shadow: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08), 0 8px 30px rgba(0,0,0,.06); }
 .mt-light .mt-brand a::before { filter: none; }
+
+/* staged start */
+.mt-t { animation: 0.3s ease both mt-tin-a; }
+.mt-t[data-k="stageSecurity"], .mt-t[data-k="solving"] { animation-name: mt-tin-b; }
+@keyframes mt-tin-a { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mt-tin-b { from { opacity: 0; } to { opacity: 1; } }
+.mt-card .mt-steps { opacity: 0; transition: opacity 0.2s; position: absolute; left: 16px; right: 16px; bottom: 5px; height: 2px; display: flex; gap: 4px; pointer-events: none; filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)); }
+.mt-card .mt-steps.is-on { opacity: 1; }
+.mt-steps i { flex: 1; display: block; border-radius: 2px; overflow: hidden; background: rgba(255, 255, 255, 0.1); }
+.mt-steps b { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), #fff); transform: scaleX(0); transform-origin: left; transition: transform 0.38s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.mt-steps .is-done b { transform: scaleX(1); transition-duration: 0.2s; }
+.mt-light .mt-card .mt-steps { filter: none; }
+.mt-light .mt-steps i { background: rgba(0, 0, 0, 0.1); }
+.mt-light .mt-steps b { background: linear-gradient(90deg, rgba(11, 11, 12, 0.5), #0b0b0c); }
+@media (prefers-reduced-motion: reduce) { .mt-t { animation: none; } .mt-steps b { transition: none; } }
+.mt-card:has(.mt-steps.is-on) .mt-by { transform: translateY(-2px); }

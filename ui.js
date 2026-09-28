@@ -55,7 +55,10 @@ const RU = {
 const texts = /^(ru|uk|be|kk|ky)\b/i.test(navigator.language || '') ? RU : EN
 document.documentElement.lang = texts === RU ? 'ru' : 'en'
 
+const STEPS = { stageLoad: 1, stageSecurity: 2, stageBrowser: 3, solving: 4 }
+
 const store = reactive({
+  staged: false,
   mode: 'pending',
   theme: 'dark',
   state: 'boot',
@@ -71,6 +74,7 @@ let slowTimer = null
 
 function apply(patch) {
   Object.assign(store, patch)
+  if (patch.key === 'stageLoad') store.staged = true
   store.leaving = false
   clearTimeout(slowTimer)
   store.slow = false
@@ -137,6 +141,18 @@ createApp({
   s: store,
   text: (key) => texts[key] || '',
   staticBase: STATIC,
+  get step() {
+    if (!store.staged || store.mode !== 'card') return 0
+    if (store.state === 'progress') return STEPS[store.key] || 5
+    return store.state === 'ready' || store.state === 'success' ? 5 : 0
+  },
+  get tail() {
+    if (store.state !== 'progress') return ''
+    return store.pct ? store.pct + '%' : ''
+  },
+  get bar() {
+    return { transform: 'scaleX(' + (store.pct ? store.pct / 100 : 0.88) + ')' }
+  },
   get showWait() {
     return store.state !== 'fatal' && (store.mode === 'passive' || (store.mode === 'invisible' && store.slow))
   },
