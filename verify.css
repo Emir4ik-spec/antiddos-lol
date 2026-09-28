@@ -159,3 +159,9 @@ button, input { font: inherit; }
 .mt-by { transition: transform 0.2s ease; }
 .mt-card:has(.mt-steps.is-on) .mt-by { transform: translateY(-2px); }
 @media (prefers-reduced-motion: reduce) { .mt-t, .mt-steps .is-cur b, .mt-steps .is-cur b::after { animation: none; } .mt-steps b { transition: none; } }
+
+/* instant tick on press */
+.mt-cbx.on { background: #3b8a5e; color: #fff; cursor: default; }
+.mt-cbx.on path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: mt-draw 0.2s ease forwards; }
+.mt-ok.is-static path { animation: none; stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: reduce) { .mt-cbx.on path { animation: none; stroke-dashoffset: 0; } }

@@ -59,6 +59,8 @@ const STEPS = { stageLoad: 1, stageSecurity: 2, stageBrowser: 3, solving: 4 }
 
 const store = reactive({
   staged: false,
+  checked: false,
+  tick: false,
   mode: 'pending',
   theme: 'dark',
   state: 'boot',
@@ -73,6 +75,10 @@ let pending = null
 let slowTimer = null
 
 function apply(patch) {
+  if (patch.state && !('checked' in patch)) {
+    store.tick = patch.state === 'success' && store.checked
+    store.checked = false
+  }
   Object.assign(store, patch)
   if (patch.key === 'stageLoad') store.staged = true
   store.leaving = false
@@ -88,7 +94,7 @@ function set(patch) {
     Object.assign(pending, patch)
     return
   }
-  const stateChange = patch.state && patch.state !== store.state && store.mode === 'card' && store.state !== 'boot'
+  const stateChange = patch.state && patch.state !== store.state && store.mode === 'card' && store.state !== 'boot' && !store.checked
   if (!stateChange) {
     apply(patch)
     return
@@ -160,8 +166,8 @@ createApp({
   click: () => {
     if (core) return core.click()
     if (!demo) return
-    set({ state: 'progress', key: 'verifying', pct: 0 })
-    setTimeout(() => set({ state: 'success', key: 'success' }), 900)
+    set({ checked: true })
+    setTimeout(() => set({ state: 'success', key: 'success' }), 250)
     setTimeout(demoStages, 2600)
   },
   retryClick: () => (core ? core.retry() : location.reload())
