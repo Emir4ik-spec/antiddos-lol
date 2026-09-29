@@ -165,3 +165,18 @@ button, input { font: inherit; }
 .mt-cbx.on path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: mt-draw 0.2s ease forwards; }
 .mt-ok.is-static path { animation: none; stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: reduce) { .mt-cbx.on path { animation: none; stroke-dashoffset: 0; } }
+
+/* inline pick check: the card grows, the puzzle folds away when solved */
+:root { interpolate-size: allow-keywords; }
+.mt-card.is-captcha { height: auto; padding: 0 16px; align-items: stretch; }
+.mt-card.is-captcha .mt-col { padding: 14px 0; gap: 10px; }
+.mt-card.is-captcha .mt-widget { min-height: 0; }
+.mt-head { display: flex; align-items: center; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.mt-head .mt-cbx { flex: none; cursor: default; }
+.mt-light .mt-head { border-bottom-color: rgba(0, 0, 0, 0.08); }
+.adl-pk-fold { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease, margin 0.5s ease; will-change: grid-template-rows, opacity; }
+.adl-pk-fold.folded { grid-template-rows: 0fr; opacity: 0; margin-top: -10px; }
+.adl-pk-fold-in { min-height: 0; overflow: hidden; }
+.adl-pk-stage svg g { animation: adlpkin 0.35s ease both; }
+@keyframes adlpkin { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .adl-pk-fold { transition: none; } }

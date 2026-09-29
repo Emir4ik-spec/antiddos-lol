@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="https://cdn.antiddos.lol/favicon.svg">
 <link rel="alternate icon" href="https://cdn.antiddos.lol/favicon.ico">
 <link rel="apple-touch-icon" href="https://cdn.antiddos.lol/apple-touch-icon.png">
-<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=41">
+<link rel="stylesheet" href="https://cdn.antiddos.lol/verify.css?v=42">
 <style>[v-cloak]{display:none}</style>
 </head>
 <body>
@@ -20,8 +20,12 @@
       <div class="mt-card" :class="['is-' + s.state, { 'mt-out': s.leaving }]">
         <template v-if="s.state === 'captcha'">
           <div class="mt-col">
+            <div class="mt-head">
+              <span class="mt-cbx" :class="{ on: s.checked }" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.75 12.25 L9.75 17.25 L19.25 6.75" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="mt-txt" v-text="text('checkbox')"></span>
+              <a class="mt-by" href="https://antiddos.lol" target="_blank" rel="noopener" :aria-label="text('by')"><span v-text="text('by')"></span><img :src="staticBase + 'brand-logo.svg'" alt=""></a>
+            </div>
             <div class="mt-widget" id="vf-widget"></div>
-            <p class="mt-txt" v-text="text('captcha')"></p>
           </div>
         </template>
         <template v-else>
