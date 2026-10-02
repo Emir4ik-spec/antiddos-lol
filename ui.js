@@ -136,13 +136,11 @@ if (demo) {
   }
 }
 
-// Mirrors the real flow (adl-core.js): the checkbox appears immediately, nothing is staged
-// or solved ahead of a click. Used to stage fake "stageLoad/stageSecurity/stageBrowser" text
-// before the checkbox ever showed — that matched the old core's behavior (which pre-solved the
-// PoW in the background before showing anything to click), but the core no longer does that,
-// so this demo stayed stuck on the stale sequence after the core was fixed.
 function demoStages() {
-  apply({ mode: 'card', state: 'ready', key: 'checkbox' })
+  apply({ mode: 'card', state: 'progress', key: 'stageLoad', pct: 0 })
+  const keys = ['stageSecurity', 'stageBrowser', 'solving']
+  keys.forEach((key, i) => setTimeout(() => set({ state: 'progress', key, pct: 0 }), 350 * (i + 1)))
+  setTimeout(() => set({ state: 'ready', key: 'checkbox' }), 350 * (keys.length + 1))
 }
 
 createApp({
